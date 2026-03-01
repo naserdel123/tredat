@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تريدات روبلوكس - Roblox Trades</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="animated-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div id="particles"></div>
+    </div>
+
+    <!-- Auth Section -->
+    <div id="auth-section" class="section active">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1 class="gradient-text">تريدات روبلوكس</h1>
+                <p>تبادل الأغراض بسهولة وأمان</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">تسجيل الدخول</button>
+                <button class="tab-btn" onclick="switchTab('register')">إنشاء حساب</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="login-username" placeholder="اسم المستخدم" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="login-password" placeholder="كلمة المرور" required>
+                </div>
+                <div id="login-error" class="error-message"></div>
+                <button type="submit" class="submit-btn">دخول</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="auth-form hidden" onsubmit="handleRegister(event)">
+                <div class="avatar-upload" onclick="document.getElementById('reg-avatar').click()">
+                    <img id="avatar-preview" src="" alt="اختر صورة">
+                    <span class="avatar-label">📷 اختر صورة شخصية</span>
+                    <input type="file" id="reg-avatar" accept="image/*" onchange="previewAvatar(this)">
+                </div>
+                <div class="input-group">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="reg-username" placeholder="اسم المستخدم" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="reg-password" placeholder="كلمة المرور" required>
+                </div>
+                <div id="register-error" class="error-message"></div>
+                <button type="submit" class="submit-btn">إنشاء حساب</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Powered by Roblox Trades © 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Section -->
+    <div id="app-section" class="section">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">R</div>
+                    <span class="logo-text">تريدات روبلوكس</span>
+                </div>
+                <div class="user-menu">
+                    <div class="user-info">
+                        <img id="user-avatar" src="" alt="User">
+                        <span id="user-name"></span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()" title="تسجيل الخروج">🚪</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h2>آخر التريدات</h2>
+                <p>اكتشف الأغراض المتاحة للتبادل</p>
+            </div>
+
+            <div id="trades-grid" class="trades-grid">
+                <!-- Trades will be inserted here -->
+            </div>
+
+            <div id="empty-state" class="empty-state hidden">
+                <div class="empty-icon">📦</div>
+                <h3>لا توجد تريدات حالياً</h3>
+                <p>كن أول من ينشر تريد!</p>
+            </div>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button class="fab" onclick="openModal()">+</button>
+    </div>
+
+    <!-- Create Trade Modal -->
+    <div id="trade-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>نشر تريد جديد</h3>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <form id="trade-form" onsubmit="createTrade(event)">
+                <div class="image-uploads">
+                    <div class="upload-box" onclick="document.getElementById('item-image').click()">
+                        <img id="item-preview" src="" alt="">
+                        <span class="upload-label">📷 صورة العرض</span>
+                        <input type="file" id="item-image" accept="image/*" required onchange="previewImage(this, 'item-preview')">
+                    </div>
+                    <div class="upload-box" onclick="document.getElementById('trade-image').click()">
+                        <img id="trade-preview" src="" alt="">
+                        <span class="upload-label">🔄 صورة المقابل</span>
+                        <input type="file" id="trade-image" accept="image/*" required onchange="previewImage(this, 'trade-preview')">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>اسم العرض</label>
+                    <input type="text" id="item-name" placeholder="مثال: Dominus Infernus" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>المقابل المطلوب</label>
+                    <input type="text" id="trade-for" placeholder="مثال: 5000 روبوكس أو Golden Crown" required>
+                </div>
+                
+                <div class="form-group required">
+                    <label>🔗 رابط حسابك في TikTok <span class="required-star">*</span></label>
+                    <input type="url" id="tiktok-link" placeholder="https://tiktok.com/@username" required>
+                    <small class="hint">يجب إدخال رابط حسابك في TikTok للتواصل</small>
+                </div>
+                
+                <button type="submit" class="submit-btn">نشر التريد</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
