@@ -1,0 +1,66 @@
+body {
+margin:0;
+font-family:'Cairo',sans-serif;
+background: linear-gradient(135deg,#1a0033,#001f3f);
+color:white;
+}
+
+.hidden { display:none; }
+
+.glass {
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(15px);
+padding:20px;
+margin:20px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+}
+
+input, select, button {
+width:100%;
+padding:10px;
+margin:5px 0;
+border:none;
+border-radius:8px;
+}
+
+button {
+background:linear-gradient(45deg,#7b2ff7,#00c6ff);
+color:white;
+cursor:pointer;
+}
+
+.products {
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+padding:20px;
+}
+
+.card {
+background:rgba(255,255,255,0.1);
+padding:15px;
+border-radius:15px;
+width:200px;
+text-align:center;
+}
+
+.card img {
+width:100%;
+border-radius:10px;
+}
+
+.floating {
+position:fixed;
+bottom:20px;
+right:20px;
+background:linear-gradient(45deg,#7b2ff7,#00c6ff);
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+cursor:pointer;
+}
