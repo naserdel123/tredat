@@ -1,0 +1,72 @@
+/* إضافات جديدة للحقول الإجبارية */
+
+.form-group.required label {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+.required-star {
+    color: #ef4444;
+    margin-right: 5px;
+}
+
+.hint {
+    display: block;
+    margin-top: 5px;
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+/* تعديل صناديق الرفع - إزالة الكلاس optional */
+.upload-box {
+    aspect-ratio: 1;
+    border: 2px dashed rgba(139, 92, 246, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    border-color: #8b5cf6;
+    transform: scale(1.02);
+}
+
+/* تأثير خطأ على الحقول الفارغة */
+.upload-box.error {
+    border-color: #ef4444;
+    animation: shake 0.5s ease;
+}
+
+/* تأكيد على TikTok */
+.tiktok-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff0050, #00f2ea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 0, 80, 0.3);
+}
+
+.tiktok-btn:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(255, 0, 80, 0.5);
+}
+
+.tiktok-btn::before {
+    content: "للتواصل تيك توك";
+    filter: brightness(0) invert(1);
+}
+
+/* بقية الملف كما هو... */
