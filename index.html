@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تريدات روبلوكس</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.moyasar.com/mpf/1.6.0/moyasar.js"></script>
+<link rel="stylesheet" href="https://cdn.moyasar.com/mpf/1.6.0/moyasar.css">
+</head>
+<body>
+
+<div id="authContainer" class="glass">
+<h2>تسجيل الدخول</h2>
+<input type="text" id="username" placeholder="اسم المستخدم">
+<input type="password" id="password" placeholder="كلمة المرور">
+<button onclick="login()">دخول</button>
+<button onclick="showRegister()">إنشاء حساب</button>
+</div>
+
+<div id="registerContainer" class="glass hidden">
+<h2>تسجيل حساب جديد</h2>
+<input type="text" id="newUsername" placeholder="اسم المستخدم">
+<input type="password" id="newPassword" placeholder="كلمة المرور">
+<button onclick="register()">تسجيل</button>
+<button onclick="showLogin()">رجوع</button>
+</div>
+
+<div id="mainContainer" class="hidden">
+<header>
+<h1>🔥 تريدات روبلوكس</h1>
+<button onclick="logout()">تسجيل خروج</button>
+</header>
+
+<div id="products" class="products"></div>
+</div>
+
+<div id="addProductBtn" class="floating hidden" onclick="showAddForm()">+</div>
+
+<div id="addProductForm" class="glass hidden">
+<h3>إضافة منتج</h3>
+<input type="text" id="pName" placeholder="اسم المنتج">
+<input type="text" id="pImage" placeholder="رابط الصورة">
+<input type="number" id="pPrice" placeholder="السعر بالريال">
+<select id="pMethod">
+<option value="تريد">تريد</option>
+<option value="هدية">هدية</option>
+<option value="مجموعة">مجموعة</option>
+</select>
+<button onclick="addProduct()">نشر</button>
+</div>
+
+<div id="paymentModal" class="glass hidden">
+<h3>الدفع</h3>
+<div class="mysr-form"></div>
+</div>
+
+<div id="robloxModal" class="glass hidden">
+<h3>أدخل اسمك في روبلوكس</h3>
+<input type="text" id="robloxName" placeholder="اسم روبلوكس">
+<button onclick="confirmOrder()">تأكيد الطلب</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
